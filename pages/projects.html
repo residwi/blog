@@ -1,0 +1,83 @@
+---
+layout: default
+title: Projects
+permalink: /projects
+---
+
+<div class="mb-8">
+  <h1 class="text-2xl font-bold text-ctp-lavender mb-2">Projects</h1>
+  <p class="text-ctp-subtext0 text-sm">
+    A showcase of my work and side projects
+  </p>
+</div>
+
+{% comment %}
+  Projects can be defined in _data/projects.yml or directly in _config.yml
+  Example structure:
+
+  projects:
+    - name: "Project Name"
+      description: "Brief description of the project"
+      tech: "React, Node.js, PostgreSQL"
+      url: "https://project-url.com"
+      github: "https://github.com/user/repo"
+{% endcomment %}
+
+{% assign projects = site.data.projects | default: site.projects %}
+
+{% if projects %}
+  {% for project in projects %}
+  <article class="mb-8 pb-8 border-b border-ctp-surface0 last:border-0">
+    <h2 class="text-lg font-semibold mb-2">
+      {% if project.url %}
+      <a href="{{ project.url }}" class="text-ctp-blue hover:text-ctp-lavender" target="_blank" rel="noopener">
+        {{ project.name }}
+      </a>
+      {% else %}
+      {{ project.name }}
+      {% endif %}
+    </h2>
+
+    <p class="text-ctp-subtext1 text-sm mb-3 leading-relaxed">
+      {{ project.description }}
+    </p>
+
+    {% if project.tech %}
+    <p class="text-ctp-overlay0 text-xs mb-2">
+      <span class="font-semibold">Tech:</span> {{ project.tech }}
+    </p>
+    {% endif %}
+
+    <div class="flex gap-4 text-sm">
+      {% if project.url %}
+      <a
+        href="{{ project.url }}"
+        class="text-ctp-blue hover:text-ctp-sapphire hover:underline"
+        target="_blank"
+        rel="noopener"
+      >
+        Visit
+      </a>
+      {% endif %}
+      {% if project.github %}
+      <a
+        href="{{ project.github }}"
+        class="text-ctp-blue hover:text-ctp-sapphire hover:underline"
+        target="_blank"
+        rel="noopener"
+      >
+        GitHub
+      </a>
+      {% endif %}
+    </div>
+  </article>
+  {% endfor %}
+{% else %}
+  <div class="text-center py-12">
+    <p class="text-ctp-overlay0 text-sm mb-4">No projects configured yet.</p>
+    <p class="text-ctp-overlay0 text-xs">
+      Add projects to <code class="bg-ctp-surface0 px-2 py-1 rounded">_data/projects.yml</code>
+      or <code class="bg-ctp-surface0 px-2 py-1 rounded">_config.yml</code>
+    </p>
+  </div>
+{% endif %}

@@ -1,0 +1,97 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you:
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+title: Resi Dwi Thawasa
+email: hello@residwi.dev
+description: >-
+  I write about things I learn, ideas I explore, and random thoughts that pop into my head. Some entries are quick TILs, others are longer reflections. Writing helps me see my ideas more clearly, and it helps me remember them what I've learned.
+tagline: My brain dumps and the things I learn along the way
+author:
+  name: Resi Dwi Thawasa
+  url: https://residwi.dev/
+baseurl: "" # the subpath of your site, e.g. /blog
+url: https://residwi.dev # the base hostname & protocol for your site, e.g. http://example.com
+github_username: "residwi"
+linkedin_username: "residwi"
+social:
+  name: Resi Dwi Thawasa
+  links:
+    - https://www.linkedin.com/in/residwi/
+    - https://github.com/residwi
+
+# Feature flags
+show_projects: false
+
+# Collections
+collections:
+  til:
+    output: true
+    permalink: /til/:title
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      permalink: /posts/:title
+      layout: "post"
+  - scope:
+      path: ""
+      type: "til"
+    values:
+      layout: "til"
+  - scope:
+      path: "pages"
+    values:
+      layout: "page"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Exclude from processing
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - package.json
+  - package-lock.json
+  - postcss.config.js
+  - tailwind.config.js

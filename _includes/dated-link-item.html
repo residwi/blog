@@ -1,0 +1,18 @@
+<li class="flex items-center gap-4">
+  <time
+    datetime="{{ include.item.date | date_to_xmlschema }}"
+    class="text-ctp-overlay1 text-sm font-mono shrink-0"
+  >
+    {{ include.item.date | date: "%Y-%m-%d" }}
+  </time>
+  <a
+    href="{{ include.item.url | relative_url }}"
+    class="text-ctp-text hover:text-ctp-lavender"
+  >
+    {% if include.show_type and include.item.collection == 'til' %}
+    [TIL] {{ include.item.title }}
+    {% else %}
+    {{ include.item.title }}
+    {% endif %}
+  </a>
+</li>

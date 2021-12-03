@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+<div class="mb-8">
+  <h1 class="text-2xl font-bold text-ctp-lavender mb-2">#{{ page.title }}</h1>
+  <p class="text-ctp-subtext0 text-sm">
+    Total {{ page.posts.size }} {% if page.posts.size == 1 %}post{% else %}posts{% endif %}
+  </p>
+</div>
+
+<ul class="space-y-2">
+  {% for post in page.posts %}
+    {% include_cached dated-link-item.html item=post show_type=true %}
+  {% endfor %}
+</ul>

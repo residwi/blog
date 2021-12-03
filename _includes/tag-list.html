@@ -1,0 +1,12 @@
+{% if include.tags %}
+<div class="mt-10 flex flex-wrap gap-4">
+  {% for tag in include.tags %}
+  <a
+    href="{{ tag | slugify | prepend: '/tags/' | relative_url }}"
+    class="not-prose text-sm text-ctp-teal hover:text-ctp-sapphire"
+  >
+    #{{ tag }}
+  </a>
+  {% endfor %}
+</div>
+{% endif %}

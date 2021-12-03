@@ -1,0 +1,25 @@
+---
+layout: default
+title: Today I Learned
+permalink: /til
+---
+
+<div class="mb-8">
+  <h1 class="text-2xl font-bold text-ctp-lavender mb-2">TIL — Today I Learned</h1>
+  <p class="text-ctp-subtext0 text-sm">
+    Quick notes and discoveries from my learning journey
+  </p>
+</div>
+
+{% if site.til.size > 0 %}
+<div class="space-y-6">
+  {% assign sorted_til = site.til | sort: 'date' | reverse %}
+  {% for til in sorted_til %}
+    {% include archive-entry.html item=til truncate=25 %}
+  {% endfor %}
+</div>
+{% else %}
+<div class="text-center py-12">
+  <p class="text-ctp-overlay0 text-sm">No TIL entries yet.</p>
+</div>
+{% endif %}

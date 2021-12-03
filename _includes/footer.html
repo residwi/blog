@@ -1,0 +1,11 @@
+<footer class="mt-8">
+  <div class="py-6 text-center text-ctp-subtext0 text-sm">
+    <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</p>
+  </div>
+</footer>
+
+<script>
+  window.SEARCH_URL = {{ '/search.json' | relative_url | jsonify }};
+</script>
+<script src="https://unpkg.com/lunr@2.3.9/lunr.min.js"></script>
+<script src="{{ '/assets/js/search.js' | relative_url }}"></script>

@@ -1,0 +1,40 @@
+---
+layout: default
+title: Tags
+permalink: /tags
+---
+
+<div class="mb-8">
+  <h1 class="text-2xl font-bold text-ctp-lavender mb-2">Tags</h1>
+  <p class="text-ctp-subtext0 text-sm">
+    Posts and TILs organized by topic
+  </p>
+</div>
+
+{% assign post_tags = site.posts | map: 'tags' | join: ',' | split: ',' %}
+{% assign til_tags = site.til | map: 'tags' | join: ',' | split: ',' %}
+{% assign all_tags = post_tags | concat: til_tags | uniq | sort %}
+
+{% if all_tags.size > 0 %}
+{% for tag in all_tags %}
+{% if tag != "" %}
+<section class="mb-10">
+  <h2 class="font-semibold text-ctp-lavender mb-3 pb-1 border-b border-ctp-surface0">
+    #{{ tag }}
+  </h2>
+
+  {% assign tagged_posts = site.posts | where_exp: "post", "post.tags contains tag" %}
+  {% assign tagged_tils = site.til | where_exp: "til", "til.tags contains tag" %}
+  {% assign tagged_items = tagged_posts | concat: tagged_tils | sort: 'date' | reverse %}
+
+  <ul class="space-y-2">
+    {% for item in tagged_items %}
+      {% include_cached dated-link-item.html item=item show_type=true %}
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+{% endfor %}
+{% else %}
+<p class="text-ctp-overlay0 text-sm">No tags yet.</p>
+{% endif %}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" class="mocha">
+  {% include head.html %}
+
+  <body class="flex flex-col min-h-screen max-w-3xl p-4 mx-auto bg-ctp-base text-ctp-text leading-relaxed">
+    {% include_cached header.html %}
+
+    <main class="py-8 grow">
+      {{ content }}
+    </main>
+
+    {% include_cached search.html %}
+    {% include_cached footer.html %}
+  </body>
+</html>

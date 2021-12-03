@@ -1,0 +1,30 @@
+<article class="pb-4 border-b border-ctp-surface0 last:border-0">
+  <div class="flex gap-4 mb-2">
+    <time
+      datetime="{{ include.item.date | date_to_xmlschema }}"
+      class="text-ctp-overlay1 text-sm font-mono shrink-0"
+    >
+      {{ include.item.date | date: "%Y-%m-%d" }}
+    </time>
+    <div class="flex-1">
+      <h2 class="text-base font-semibold mb-1">
+        <a href="{{ include.item.url | relative_url }}" class="text-ctp-text hover:text-ctp-lavender">
+          {{ include.item.title }}
+        </a>
+      </h2>
+      {% if include.item.excerpt %}
+      {% assign truncate_words = include.truncate | default: 30 %}
+      <p class="text-ctp-subtext1 text-sm leading-relaxed">
+        {{ include.item.excerpt | strip_html | truncatewords: truncate_words }}
+      </p>
+      {% endif %}
+      {% if include.item.tags %}
+      <div class="flex flex-wrap gap-2 mt-2">
+        {% for tag in include.item.tags %}
+        <span class="text-ctp-overlay0 text-xs">#{{ tag }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</article>

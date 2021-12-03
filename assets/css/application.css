@@ -1,0 +1,50 @@
+@import "./syntax.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .highlight {
+    @apply rounded-lg;
+  }
+
+  .prose code[class*="language-plaintext"] {
+    @apply bg-ctp-surface0 px-1 py-0.5 rounded-md;
+  }
+}
+
+@layer components {
+  .prose {
+    --tw-prose-body: theme("colors.ctp.text");
+    --tw-prose-headings: theme("colors.ctp.lavender");
+    --tw-prose-links: theme("colors.ctp.blue");
+    --tw-prose-bold: theme("colors.ctp.text");
+    --tw-prose-counters: theme("colors.ctp.mauve");
+    --tw-prose-bullets: theme("colors.ctp.mauve");
+    --tw-prose-hr: theme("colors.ctp.surface2");
+    --tw-prose-quotes: theme("colors.ctp.text");
+    --tw-prose-quote-borders: theme("colors.ctp.mauve");
+    --tw-prose-code: theme("colors.ctp.text");
+    --tw-prose-pre-code: theme("colors.ctp.text");
+    --tw-prose-pre-bg: theme("colors.ctp.mantle");
+    --tw-prose-th-borders: theme("colors.ctp.surface2");
+    --tw-prose-td-borders: theme("colors.ctp.surface1");
+  }
+
+  .prose code::before,
+  .prose code::after {
+    display: none;
+  }
+
+  .prose a {
+    color: theme("colors.ctp.blue");
+    text-decoration: none;
+  }
+
+  .prose a:hover {
+    color: theme("colors.ctp.sapphire");
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
