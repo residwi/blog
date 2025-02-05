@@ -1,10 +1,40 @@
 @import "./syntax.css";
+@import "tailwindcss";
+@import "@catppuccin/tailwindcss/mocha.css";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.frappe, .frappe *, .macchiato, .macchiato *, .mocha, .mocha *));
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --animate-blink: blink 1.2s steps(1) infinite;
+  --animate-blink-text: blink-text 1.2s steps(1) infinite;
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes blink-text {
+    0%,
+    100% {
+      color: var(--catppuccin-color-base);
+    }
+    50% {
+      color: var(--catppuccin-color-peach);
+    }
+  }
+}
 
 @layer base {
+  /* Base code block styles */
   .highlight {
     @apply rounded-lg;
   }
@@ -14,37 +44,42 @@
   }
 }
 
-@layer components {
-  .prose {
-    --tw-prose-body: theme("colors.ctp.text");
-    --tw-prose-headings: theme("colors.ctp.lavender");
-    --tw-prose-links: theme("colors.ctp.blue");
-    --tw-prose-bold: theme("colors.ctp.text");
-    --tw-prose-counters: theme("colors.ctp.mauve");
-    --tw-prose-bullets: theme("colors.ctp.mauve");
-    --tw-prose-hr: theme("colors.ctp.surface2");
-    --tw-prose-quotes: theme("colors.ctp.text");
-    --tw-prose-quote-borders: theme("colors.ctp.mauve");
-    --tw-prose-code: theme("colors.ctp.text");
-    --tw-prose-pre-code: theme("colors.ctp.text");
-    --tw-prose-pre-bg: theme("colors.ctp.mantle");
-    --tw-prose-th-borders: theme("colors.ctp.surface2");
-    --tw-prose-td-borders: theme("colors.ctp.surface1");
+@utility prose {
+  /* Override Tailwind Typography colors with Catppuccin colors */
+  --tw-prose-body: var(--catppuccin-color-text) !important;
+  --tw-prose-headings: var(--catppuccin-color-lavender) !important;
+  --tw-prose-lead: var(--catppuccin-color-subtext0) !important;
+  --tw-prose-links: var(--catppuccin-color-blue) !important;
+  --tw-prose-bold: var(--catppuccin-color-text) !important;
+  --tw-prose-counters: var(--catppuccin-color-mauve) !important;
+  --tw-prose-bullets: var(--catppuccin-color-mauve) !important;
+  --tw-prose-hr: var(--catppuccin-color-surface2) !important;
+  --tw-prose-quotes: var(--catppuccin-color-text) !important;
+  --tw-prose-quote-borders: var(--catppuccin-color-mauve) !important;
+  --tw-prose-captions: var(--catppuccin-color-subtext0) !important;
+  --tw-prose-kbd: var(--catppuccin-color-text) !important;
+  --tw-prose-kbd-shadows: var(--catppuccin-color-mantle) !important;
+  --tw-prose-code: var(--catppuccin-color-text) !important;
+  --tw-prose-pre-code: var(--catppuccin-color-text) !important;
+  --tw-prose-pre-bg: var(--catppuccin-color-mantle) !important;
+  --tw-prose-th-borders: var(--catppuccin-color-surface2) !important;
+  --tw-prose-td-borders: var(--catppuccin-color-surface1) !important;
+
+  code {
+    &::before,
+    &::after {
+      display: none;
+    }
   }
 
-  .prose code::before,
-  .prose code::after {
-    display: none;
-  }
-
-  .prose a {
-    color: theme("colors.ctp.blue");
+  a:not(.not-prose) {
+    color: var(--catppuccin-color-blue);
     text-decoration: none;
-  }
 
-  .prose a:hover {
-    color: theme("colors.ctp.sapphire");
-    text-decoration: underline;
-    text-underline-offset: 4px;
+    &:hover {
+      color: var(--catppuccin-color-sapphire);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
   }
 }
