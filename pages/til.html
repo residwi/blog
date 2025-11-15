@@ -15,7 +15,7 @@ permalink: /til
 <div class="space-y-6">
   {% assign sorted_til = site.til | sort: 'date' | reverse %}
   {% for til in sorted_til %}
-    {% include archive-entry.html item=til truncate=25 %}
+    {% include_cached archive-entry.html item=til truncate=25 %}
   {% endfor %}
 </div>
 {% else %}

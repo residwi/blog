@@ -14,7 +14,7 @@ permalink: /posts
 {% if site.posts.size > 0 %}
 <div class="space-y-6">
   {% for post in site.posts %}
-    {% include archive-entry.html item=post truncate=30 %}
+    {% include_cached archive-entry.html item=post truncate=30 %}
   {% endfor %}
 </div>
 {% else %}

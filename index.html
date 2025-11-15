@@ -18,7 +18,7 @@ layout: default
     {% if site.posts.size > 0 %}
     <ul class="space-y-2">
       {% for post in site.posts limit:5 %}
-        {% include dated-link-item.html item=post %}
+        {% include_cached dated-link-item.html item=post %}
       {% endfor %}
     </ul>
     <p class="mt-4">
@@ -37,7 +37,7 @@ layout: default
     <ul class="space-y-2">
       {% assign sorted_til = site.til | sort: 'date' | reverse %}
       {% for til in sorted_til limit:5 %}
-        {% include dated-link-item.html item=til %}
+        {% include_cached dated-link-item.html item=til %}
       {% endfor %}
     </ul>
     <p class="mt-4">

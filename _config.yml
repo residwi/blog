@@ -78,6 +78,7 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-include-cache
 
 # Exclude from processing
 exclude:
@@ -92,6 +93,6 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - package.json
-  - package-lock.json
+  - bun.lock
   - postcss.config.js
   - tailwind.config.js

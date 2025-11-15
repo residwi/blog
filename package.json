@@ -10,13 +10,13 @@
   "license": "MIT",
   "scripts": {
     "build:css": "tailwindcss -i ./assets/css/application.css -o ./assets/css/main.css",
-    "watch:css": "npm run build:css -- --watch",
-    "dev": "npm run build:css && bundle exec jekyll serve --livereload"
+    "watch:css": "bun run build:css --watch",
+    "dev": "bun run build:css && bundle exec jekyll serve --livereload"
   },
   "devDependencies": {
     "@catppuccin/tailwindcss": "^1.0.0",
-    "@tailwindcss/cli": "^4.0.0",
+    "@tailwindcss/cli": "^4.3.0",
     "@tailwindcss/typography": "^0.5.10",
-    "tailwindcss": "^4.0.0"
+    "tailwindcss": "^4.3.0"
   }
 }
