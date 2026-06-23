@@ -28,6 +28,7 @@ author:
   url: https://residwi.dev/
 baseurl: "" # the subpath of your site, e.g. /blog
 url: https://residwi.dev # the base hostname & protocol for your site, e.g. http://example.com
+timezone: Asia/Jakarta # build in WIB so dates match locally and on server builds
 github_username: "residwi"
 linkedin_username: "residwi"
 social:
